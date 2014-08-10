@@ -472,10 +472,12 @@ table.simple {
                 </li>
                 <li>
                   <p>
-                    Perform the ECDH primitive specified in <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#X9.63">X9.63</a> Section
-                    5.4.1 with <var>key</var> as the EC private key <var>d</var> and the EC public
+                    Perform the Curve25519 function specified in
+        <a
+        href="http://cr.yp.to/ecdh/curve25519-20060209.pdf">Curve25519</a>
+        with <var>key</var> as the EC private key (first argument) and the EC public
                     key represented by the [[<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-CryptoKey-slot-handle">handle</a>]]
-                    internal slot of <var>publicKey</var> as the EC public key <var>Q</var>.
+                    internal slot of <var>publicKey</var> (second argument).
                   </p>
                 </li>
                 <li>
@@ -487,9 +489,12 @@ table.simple {
                 </li>
                 <li>
                   <p>
-                    Let <var>secret</var> be the result of applying the field element to
-                    octet string conversion defined in Section ? of <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#X9.63">X9.63</a>
-                    to the output of the ECDH primitive.
+                    Let <var>secret</var> be the 32-byte
+        octet string output
+        from the Curve25519 function defined in <a
+        href="http://cr.yp.to/ecdh/curve25519-20060209.pdf">Curve25519</a>.
+        In other words, <var>secret</var> is the unique 32-byte little-endian
+        encoding of an integer >= 0 and < 2<sup>255</sup>-19.
                   </p>
                 </li>
                 <li>
@@ -500,7 +505,7 @@ table.simple {
                     <dd>
                       <dl class="switch">
                         <dt>
-                          If the length of <var>secret</var> in bits is less than
+                          If 256 is less than
                           <var>length</var>:
                         </dt>
                         <dd>
@@ -664,10 +669,14 @@ table.simple {
                         </li>
                         <li>
                           <p>
-                            Let <var>Q</var> be the elliptic curve point on the curve identified
-                            by the <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-EcKeyImportParams-namedCurve">namedCurve</a>
-                            member of <var>normalizedAlgorithm</var> identified by interpreting
-                            <var>keyData</var> according to <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#X9.62">X9.62</a> Annex A.
+                            Let <var>Q</var> be the Curve25519 public key identified by interpreting
+                            <var>keyData</var> according to <a
+            href="Curve25519">Curve25519</a>.  In other words,
+            <var>keyData</var> is the 32-byte little-endian
+        encoding of an integer >= 0 and < 2<sup>255</sup>-19.  The
+            high-order bit is ignored.  If the remaining 255 bits
+            encode a number >= 2<sup>255</sup>-19, that number is
+            reduced modulo 2<sup>255</sup>-19.    
                           </p>
                         </li>
                         <li>
@@ -825,9 +834,12 @@ table.simple {
                         </li>
                         <li>
                           <p>
-                            Let <var>data</var> be an octet string representing the Elliptic Curve
-                            point <var>Q</var> represented by [[<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-CryptoKey-slot-handle">handle</a>]] internal slot of
-                            <var>key</var> according to <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#X9.62">X9.62</a> Annex A.
+                            Let <var>data</var> be the 32-byte octet string
+            representing the Curve25519 public key represented by [[<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-CryptoKey-slot-handle">handle</a>]] internal slot of
+                            <var>key</var> according to <a
+            href="http://cr.yp.to/ecdh/curve25519-20060209.pdf">Curve25519</a>.  In other words,
+            <var>data</var> is the unique 32-byte little-endian
+        encoding of an integer >= 0 and < 2<sup>255</sup>-19.
                           </p>
                         </li>
                         <li>
