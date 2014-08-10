@@ -128,7 +128,7 @@ table.simple {
     
   </p>
   <h1 class="title p-name" id="title"
-  property="dcterms:title">Curve25519 for WebCrypto</h1>
+  property="dcterms:title">The ECDH-CURVE25519 Algorithm for WebCrypto</h1>
   
   <h2 property="dcterms:issued" datatype="xsd:dateTime" content="2013-10-23T20:01:57.000Z" id="w3c-editor-s-draft-23-october-2013"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2013-10-23">23 October 2013</time></h2>
   <dl>
@@ -262,16 +262,16 @@ table.simple {
     <section>
 
      <div id="ecdh" class="section">
-        <h3>26. ECDH<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#ecdh"></a></span></h3>
+        <h3>2. ECDH-CURVE25519<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#ecdh"></a></span></h3>
         <div id="ecdh-description" class="section">
-          <h4>26.1. Description<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#ecdh-description"></a></span></h4>
+          <h4>2.1. Description<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#ecdh-description"></a></span></h4>
           <p>
             This describes using Elliptic Curve Diffie-Hellman (ECDH) for key generation and key
-            agreement, as specified by <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#X9.63">X9.63</a>.
+            agreement, as specified by <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#X9.63">Curve25519</a>.
           </p>
         </div>
         <div id="ecdh-registration" class="section">
-          <h4>26.2. Registration<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#ecdh-registration"></a></span></h4>
+          <h4>2.2. Registration<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#ecdh-registration"></a></span></h4>
           <p>
             The <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#recognized-algorithm-name">recognized algorithm name</a> for
             this algorithm is <code>"ECDH"</code>.
@@ -287,7 +287,7 @@ table.simple {
             <tbody>
               <tr>
                 <td>generateKey</td>
-                <td><a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-EcKeyGenParams">EcKeyGenParams</a></td>
+                <td>None</a></td>
                 <td><a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-CryptoKeyPair">CryptoKeyPair</a></td>
               </tr>
               <tr>
@@ -297,7 +297,7 @@ table.simple {
               </tr>
               <tr>
                 <td>importKey</td>
-                <td><a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-EcKeyImportParams">EcKeyImportParams</a></td>
+                <td>None</td>
                 <td><a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-CryptoKey">CryptoKey</a></td>
               </tr>
               <tr>
@@ -309,7 +309,7 @@ table.simple {
           </table>
         </div>
         <div id="dh-EcdhKeyDeriveParams" class="section">
-          <h4>26.3. EcdhKeyDeriveParams dictionary<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dh-EcdhKeyDeriveParams">¶</a></span></h4>
+          <h4>2.3. EcdhKeyDeriveParams dictionary<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dh-EcdhKeyDeriveParams"></a></span></h4>
           <div class="block"><div class="blockTitleDiv"><span class="blockTitle">IDL</span></div><div class="blockContent"><pre class="code"><code class="idl-code">
 typedef Uint8Array <dfn id="dfn-ECPoint">ECPoint</dfn>;
 
@@ -320,19 +320,11 @@ dictionary <dfn id="dfn-EcdhKeyDeriveParams">EcdhKeyDeriveParams</dfn> : <a href
           </code></pre></div></div>
         </div>
         <div id="ecdh-operations" class="section">
-          <h4>26.4. Operations<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#ecdh-operations">¶</a></span></h4>
+          <h4>2.4. Operations<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#ecdh-operations">¶</a></span></h4>
           <dl>
             <dt>Generate Key</dt>
             <dd>
               <ol>
-                <li>
-                  <p>
-                    If any of the members of <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-EcKeyGenParams">EcKeyGenParams</a> are
-                    not present in <var>normalizedAlgorithm</var>,
-                    then <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#concept-return-an-error">return an error</a> named
-                    <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-SyntaxError"><code>SyntaxError</code></a>.
-                  </p>
-                </li>
                 <li>
                   <p>
                     If <var>usages</var> contains a value which is not
@@ -343,9 +335,7 @@ dictionary <dfn id="dfn-EcdhKeyDeriveParams">EcdhKeyDeriveParams</dfn> : <a href
                 </li>
                 <li>
                   <p>
-                    Generate an Elliptic Curve key pair, as defined in [<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#X9.63">X9.63</a>] with domain parameters for the curve identified by
-                    the <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-EcKeyGenParams-namedCurve">namedCurve</a> member of
-                    <var>normalizedAlgorithm</var>.
+                    Generate an Elliptic Curve key pair, as defined in [<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#X9.63">Curve25519</a>].
                   </p>
                 </li>
                 <li>
@@ -365,7 +355,7 @@ dictionary <dfn id="dfn-EcdhKeyDeriveParams">EcdhKeyDeriveParams</dfn> : <a href
                 <li>
                   <p>
                     Set the <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-Algorithm-name">name</a> member of
-                    <var>algorithm</var> to <code>"ECDH"</code>.
+                    <var>algorithm</var> to <code>"ECDH-CURVE25519"</code>.
                   </p>
                 </li>
                 <li>
@@ -483,7 +473,7 @@ dictionary <dfn id="dfn-EcdhKeyDeriveParams">EcdhKeyDeriveParams</dfn> : <a href
                 <li>
                   <p>
                     If the <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-KeyAlgorithm-name">name</a> attribute of the [[<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-CryptoKey-slot-algorithm">algorithm</a>]] internal slot of
-                    <var>publicKey</var> is not <code>"ECDH"</code>, then <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#concept-return-an-error">return an error</a> named <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-InvalidAccessError"><code>InvalidAccessError</code></a>.
+                    <var>publicKey</var> is not <code>"ECDH-CURVE25519"</code>, then <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#concept-return-an-error">return an error</a> named <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-InvalidAccessError"><code>InvalidAccessError</code></a>.
                   </p>
                 </li>
                 <li>
@@ -651,12 +641,6 @@ dictionary <dfn id="dfn-EcdhKeyDeriveParams">EcdhKeyDeriveParams</dfn> : <a href
                         </li>
                         <li>
                           <p>
-                            If <var>namedCurve</var> is defined, and not equal to the <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-EcKeyImportParams-namedCurve">namedCurve</a> member of
-                            <var>normalizedAlgorithm</var>, <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#concept-return-an-error">return an error</a> named <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-DataError"><code>DataError</code></a>.
-                          </p>
-                        </li>
-                        <li>
-                          <p>
                             Let <var>key</var> be a new <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-CryptoKey">CryptoKey</a>
                             object that represents the Elliptic Curve public key identified by
                             performing the conversion steps defined in Section 2.2 of <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#RFC5480">RFC 5480</a>.
@@ -676,7 +660,7 @@ dictionary <dfn id="dfn-EcdhKeyDeriveParams">EcdhKeyDeriveParams</dfn> : <a href
                         <li>
                           <p>
                             Set the <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-KeyAlgorithm-name">name</a> attribute of
-                            <var>algorithm</var> to <code>"ECDH"</code>.
+                            <var>algorithm</var> to <code>"ECDH-CURVE25519"</code>.
                           </p>
                         </li>
                         <li>
@@ -821,12 +805,6 @@ dictionary <dfn id="dfn-EcdhKeyDeriveParams">EcdhKeyDeriveParams</dfn> : <a href
                         </li>
                         <li>
                           <p>
-                            If <var>namedCurve</var> is defined, and not equal to the <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-EcKeyImportParams-namedCurve">namedCurve</a> member of
-                            <var>normalizedAlgorithm</var>, <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#concept-return-an-error">return an error</a> named <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-DataError"><code>DataError</code></a>.
-                          </p>
-                        </li>
-                        <li>
-                          <p>
                             Let <var>key</var> be a new <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-CryptoKey">CryptoKey</a>
                             object that represents the Elliptic Curve private key identified by
                             performing the conversion steps defined in Section 3 of <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#RFC5915">RFC 5915</a>.
@@ -846,7 +824,7 @@ dictionary <dfn id="dfn-EcdhKeyDeriveParams">EcdhKeyDeriveParams</dfn> : <a href
                         <li>
                           <p>
                             Set the <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-KeyAlgorithm-name">name</a> attribute of
-                            <var>algorithm</var> to <code>"ECDH"</code>.
+                            <var>algorithm</var> to <code>"ECDH-CURVE25519"</code>.
                           </p>
                         </li>
                         <li>
@@ -983,7 +961,7 @@ dictionary <dfn id="dfn-EcdhKeyDeriveParams">EcdhKeyDeriveParams</dfn> : <a href
                         <li>
                           <p>
                             Set the <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-KeyAlgorithm-name">name</a> attribute of
-                            <var>algorithm</var> to <code>"ECDH"</code>.
+                            <var>algorithm</var> to <code>"ECDH-CURVE25519"</code>.
                           </p>
                         </li>
                         <li>
@@ -1050,7 +1028,7 @@ dictionary <dfn id="dfn-EcdhKeyDeriveParams">EcdhKeyDeriveParams</dfn> : <a href
                         <li>
                           <p>
                             Set the <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-KeyAlgorithm-name">name</a> attribute of
-                            <var>algorithm</var> to <code>"ECDH"</code>.
+                            <var>algorithm</var> to <code>"ECDH-CURVE25519"</code>.
                           </p>
                         </li>
                         <li>
