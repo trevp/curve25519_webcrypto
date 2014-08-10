@@ -547,8 +547,9 @@ table.simple {
                         </li>
                         <li>
                           <p>
-                            If the <code>"kty"</code> field of <var>jwk</var> is
-                            to <code>"EC"</code>,
+                            If the <code>"kty"</code> field of
+            <var>jwk</var> is not 
+                            <code>"oct"</code>,
                             then <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#concept-return-an-error">return an error</a> named
                             <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-DataError"><code>DataError</code></a>.
                           </p>
@@ -875,8 +876,8 @@ table.simple {
     <section class="appendix" id="acknowledgements">
       <!--OddPage--><h2 aria-level="1" role="heading" id="h2_acknowledgements"><span class="secno">A. </span>Acknowledgements</h2>
       <p>
-        Thanks to Dan Berstein for inventing Curve25519.  Thanks to
-      Ryan Sleevi for his tireless work on WebCrypto.
+        Thanks to Dan Berstein for Curve25519.  Thanks to
+      Ryan Sleevi for guidance.
       </p>
     </section>
   
