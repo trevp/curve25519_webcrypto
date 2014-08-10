@@ -124,8 +124,6 @@ table.simple {
   <body class="h-entry" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
   <p>
     
-      <a href="http://www.w3.org/"><img width="72" height="48" src="./Curve25519_WebCrypto_files/w3c_home" alt="W3C"></a>
-    
   </p>
   <h1 class="title p-name" id="title"
   property="dcterms:title">The ECDH-CURVE25519 Algorithm for WebCrypto</h1>
@@ -133,8 +131,8 @@ table.simple {
   <h2 property="dcterms:issued" datatype="xsd:dateTime"
   content="2014-08-10T00:00:00.000Z"
   id="w3c-editor-s-draft-10-august-2014"><abbr title="World Wide Web
-  Consortium">W3C</abbr> Editor's Draft <time class="dt-published"
-  datetime="2013-10-23">August 10 2014</time></h2>
+  Consortium">W3C</abbr> Experimental Draft <time class="dt-published"
+  datetime="2014-08-14">August 10 2014</time></h2>
   <dl>
     
       <dt>This version:</dt>
@@ -159,7 +157,7 @@ table.simple {
     
       <p class="copyright">
         <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> ©
-        2013
+        2014
         
         <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup>
         (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
@@ -181,104 +179,38 @@ table.simple {
 </div>
     <section id="abstract" class="introductory" property="dcterms:abstract" datatype="" typeof="bibo:Chapter" resource="#abstract" rel="bibo:Chapter"><h2 aria-level="1" role="heading" id="h2_abstract">Abstract</h2>
       <p>
-        This is the abstract for your specification.
+        This is a first attempt at specifying Curve25519 ECDH
+in WebCrypto.
       </p>
     </section><section id="sotd" class="introductory" typeof="bibo:Chapter" resource="#sotd" rel="bibo:Chapter"><h2 aria-level="1" role="heading" id="h2_sotd">Status of This Document</h2>
   
     
       
-        <p>
-          <em>This section describes the status of this document at the time of its publication.
-          Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the
-          latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at
-          http://www.w3.org/TR/.</em>
-        </p>
-        
       <p>
-        You need to have a custom SotD paragraph. Maybe give a succinct description of your spec's
-        status.
+        First draft.
       </p>
     
-        <p>
-          This document was published by the <a href="http://example.org/really-cool-wg">In Charge Of This Document Working Group</a> as an Editor's Draft.
-          
-          
-            If you wish to make comments regarding this document, please send them to 
-            <a href="mailto:spec-writers-anonymous@w3.org">spec-writers-anonymous@w3.org</a> 
-            (<a href="mailto:spec-writers-anonymous-request@w3.org?subject=subscribe">subscribe</a>,
-            <a href="http://lists.w3.org/Archives/Public/spec-writers-anonymous/">archives</a>).
-          
-          
-          
-          
-            All comments are welcome.
-          
-        </p>
-        
-        
-          <p>
-            Publication as an Editor's Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
-            Membership. This is a draft document and may be updated, replaced or obsoleted by other
-            documents at any time. It is inappropriate to cite this document as other than work in
-            progress.
-          </p>
-        
-        
-        
-        <p>
-          
-            This document was produced by a group operating under the 
-            <a id="sotd_patent" about="" rel="w3p:patentRules" href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
-            Policy</a>.
-          
-          
-          
-            
-              <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="" rel="disclosure">public list of any patent
-              disclosures</a> 
-            
-            made in connection with the deliverables of the group; that page also includes
-            instructions for disclosing a patent. An individual who has actual knowledge of a patent
-            which the individual believes contains
-            <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
-            Claim(s)</a> must disclose the information in accordance with
-            <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
-            6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
-          
-          
-        </p>
-        
-          <p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2014/Process-20140801/">1 August 2014 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
-          </p>
         
         
       
     
   
-</section><section id="toc"><h2 class="introductory" aria-level="1" role="heading" id="h2_toc">Table of Contents</h2><ul class="toc" role="directory" id="respecContents"><li class="tocline"><a href="http://www.w3.org/respec/examples/template.html#section-title" class="tocxref"><span class="secno">1. </span>Section Title</a></li><li class="tocline"><a href="http://www.w3.org/respec/examples/template.html#acknowledgements" class="tocxref"><span class="secno">A. </span>Acknowledgements</a></li></ul></section>
+</section><section id="toc"><h2 class="introductory" aria-level="1" role="heading" id="h2_toc">Table of Contents</h2><ul class="toc" role="directory" id="respecContents"><li class="tocline"><a href="http://www.w3.org/respec/examples/template.html#section-title" class="tocxref"><span class="secno">1. </span>ECDH-CURVE25519</a></li><li class="tocline"><a href="http://www.w3.org/respec/examples/template.html#acknowledgements" class="tocxref"><span class="secno">A. </span>Acknowledgements</a></li></ul></section>
     
-    
-    
-    <section id="section-title">
-      <!--OddPage--><h2 aria-level="1" role="heading" id="h2_section-title"><span class="secno">1. </span>Section Title</h2>
-      <p>
-        Blah blah blah...
-      </p>
-    </section>
-
+        
     <section>
 
      <div id="ecdh" class="section">
-        <h3>2. ECDH-CURVE25519<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#ecdh"></a></span></h3>
+        <h3>1. ECDH-CURVE25519<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#ecdh"></a></span></h3>
         <div id="ecdh-description" class="section">
-          <h4>2.1. Description<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#ecdh-description"></a></span></h4>
+          <h4>1.1. Description<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#ecdh-description"></a></span></h4>
           <p>
             This describes using Elliptic Curve Diffie-Hellman (ECDH) for key generation and key
             agreement, as specified by <a href="http://cr.yp.to/ecdh/curve25519-20060209.pdf">Curve25519</a>.
           </p>
         </div>
         <div id="ecdh-registration" class="section">
-          <h4>2.2. Registration<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#ecdh-registration"></a></span></h4>
+          <h4>1.2. Registration<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#ecdh-registration"></a></span></h4>
           <p>
             The <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#recognized-algorithm-name">recognized algorithm name</a> for
             this algorithm is <code>"ECDH-CURVE25519"</code>.
@@ -316,7 +248,7 @@ table.simple {
           </table>
         </div>
         <div id="ecdh-operations" class="section">
-          <h4>2.4. Operations<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#ecdh-operations"></a></span></h4>
+          <h4>1.3. Operations<span class="section-link">&nbsp;<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#ecdh-operations"></a></span></h4>
           <dl>
             <dt>Generate Key</dt>
             <dd>
@@ -589,7 +521,7 @@ table.simple {
                         <li>
                         <p>
                         If the <code>"k"</code> field of
-            <var>jwk</var> does not have bits 0, 1, 2 of the first
+            <var>jwk</var> does not have bits 0, 1, and 2 of the first
             byte clear, bit 7 of the last byte clear, and bit 6 of the
             last byte set, as per <a
             href="Curve25519">Curve25519</a> Section 3, then <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#concept-return-an-error">return an error</a> named
@@ -598,12 +530,12 @@ table.simple {
                         </li>
                         <li>
                                   <p>
-                                    Let <var>key</var> be a new <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-CryptoKey">CryptoKey</a> object that represents the
+                        Let <var>key</var> be a new <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-CryptoKey">CryptoKey</a> object that represents the
                                     Elliptic Curve private key
-            identified by interpreting the <code>"k"</code> field of 
+                        identified by interpreting the <code>"k"</code> field of 
                                     <var>jwk</var> as a private key
-            according to <a
-            href="Curve25519">Curve25519</a>.
+                        according to <a
+                        href="Curve25519">Curve25519</a>.  
                                   </p>
                         </li>
                         <li>
@@ -759,7 +691,9 @@ table.simple {
                           <p>
                             Set the <code>k</code> attribute of
             <var>jwk</var> to a base64url encoding of the 32-octet curve25519
-            private key.
+            private key.  In other words, the base64url-encoded value
+            is a 32-byte encoding of a little-endian integer with bits 0, 1, and 2 of the first byte clear, bit 7 of the last
+byte clear, and bit 6 of the last byte set.
                           </p>
                         </li>
                         <li>
@@ -837,7 +771,7 @@ table.simple {
       <!--OddPage--><h2 aria-level="1" role="heading" id="h2_acknowledgements"><span class="secno">A. </span>Acknowledgements</h2>
       <p>
         Thanks to Dan Berstein for Curve25519.  Thanks to
-      Ryan Sleevi for guidance.
+      Ryan Sleevi for advice.
       </p>
     </section>
   
