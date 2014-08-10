@@ -579,62 +579,36 @@ table.simple {
                           </p>
                         </li>
                         <li>
+                        <p>
+                        If the <code>"k"</code> field of
+            <var>jwk</var> is not a base64url encoding of a 32-byte
+                        octet string then <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#concept-return-an-error">return an error</a> named
+                            <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-DataError"><code>DataError</code></a>.
+                        </p>
                         </li>
                         <li>
-                          <dl class="switch">
-                            <dt>If the <code>"d"</code> field is present:</dt>
-                            <dd>
-                              <ol>
-                                <li>
-                                  <p>
-                                    If <var>jwk</var> does not meet the requirements of Section
-                                    6.2.2 of <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#jwa">JSON Web Algorithms</a>, then <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#concept-return-an-error">return an error</a> named <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-DataError"><code>DataError</code></a>.
-                                  </p>
-                                </li>
-                                <li>
-                                  <p>
-                                    Let <var>key</var> be a new <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-CryptoKey">CryptoKey</a> object that represents the
-                                    Elliptic Curve private key identified by interpreting
-                                    <var>jwk</var> according to Section 6.2.2 of <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#jwa">JSON Web Algorithms</a>.
-                                  </p>
-                                </li>
-                                <li>
-                                  <p>
-                                    Set the [[<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-CryptoKey-slot-type">type</a>]]
-                                    internal slot of <var>Key</var> to <code>"private"</code>.
-                                  </p>
-                                </li>
-                              </ol>
-                            </dd>
-                            <dt>Otherwise:</dt>
-                            <dd>
-                              <ol>
-                                <li>
-                                  <p>
-                                    If <var>jwk</var> does not meet the requirements of Section
-                                    6.2.1 of <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#jwa">JSON Web Algorithms</a>, then <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#concept-return-an-error">return an error</a> named <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-DataError"><code>DataError</code></a>.
-                                  </p>
-                                </li>
-                                <li>
+                        <p>
+                        If the <code>"k"</code> field of
+            <var>jwk</var> does not have bits 0, 1, 2 of the first
+            byte clear, bit 7 of the last byte clear, and bit 6 of the
+            last byte set, as per <a
+            href="Curve25519">Curve25519</a> Section 3, then <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#concept-return-an-error">return an error</a> named
+                            <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-DataError"><code>DataError</code></a>.
+                        </p>
+                        </li>
+                        <li>
                                   <p>
                                     Let <var>key</var> be a new <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-CryptoKey">CryptoKey</a> object that represents the
-                                    Elliptic Curve public key identified by interpreting
-                                    <var>jwk</var> according to Section 6.2.1 of <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#jwa">JSON Web Algorithms</a>.
+                                    Elliptic Curve private key
+            identified by interpreting the <code>"k"</code> field of 
+                                    <var>jwk</var> as a private key
+            according to <a
+            href="Curve25519">Curve25519</a>.
                                   </p>
-                                </li>
-                                <li>
-                                  <p>
-                                    Set the [[<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-CryptoKey-slot-type">type</a>]]
-                                    internal slot of <var>Key</var> to <code>"public"</code>.
-                                  </p>
-                                </li>
-                              </ol>
-                            </dd>
-                          </dl>
                         </li>
                         <li>
                           <p>
-                            Let <var>algorithm</var> be a new instance of an <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-KeyAlgorithm">KeyAlgorithm</a> object.
+                            Let <var>algorithm</var> be a new instance of a <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-KeyAlgorithm">KeyAlgorithm</a> object.
                           </p>
                         </li>
                         <li>
@@ -762,6 +736,14 @@ table.simple {
                     <dd>
                       <ol>
                         <li>
+                        <p>
+                        If the [[<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-CryptoKey-slot-type">type</a>]] internal slot
+                              of <var>key</var> is not
+            <code>"private"</code>, then <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#concept-return-an-error">return an
+                    error</a> named <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-OperationError"><code>OperationError</code></a>.
+                        </p>
+                        </li>
+                        <li>
                           <p>
                             Let <var>jwk</var> be a new <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-JsonWebKey">JsonWebKey</a>
                             dictionary.
@@ -770,37 +752,15 @@ table.simple {
                         <li>
                           <p>
                             Set the <code>kty</code> attribute of <var>jwk</var> to
-                            <code>"EC"</code>.
+                            <code>"oct"</code>.
                           </p>
                         </li>
                         <li>
                           <p>
-                            Set the <code>x</code> attribute of <var>jwk</var> according to the
-                            definition in Section 6.2.1.2 of <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#jwa">JSON Web
-                            Algorithms</a>.
+                            Set the <code>k</code> attribute of
+            <var>jwk</var> to a base64url encoding of the 32-octet curve25519
+            private key.
                           </p>
-                        </li>
-                        <li>
-                          <p>
-                            Set the <code>y</code> attribute of <var>jwk</var> according to the
-                            definition in Section 6.2.1.3 of <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#jwa">JSON Web
-                            Algorithms</a>.
-                          </p>
-                        </li>
-                        <li>
-                          <dl class="switch">
-                            <dt>
-                              If the [[<a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-CryptoKey-slot-type">type</a>]] internal slot
-                              of <var>key</var> is <code>"private"</code>
-                            </dt>
-                            <dd>
-                              <p>
-                                Set the <code>d</code> attribute of <var>jwk</var> according to the
-                                definition in Section 6.2.2.1 of <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#jwa">JSON Web
-                                Algorithms</a>.
-                              </p>
-                            </dd>
-                          </dl>
                         </li>
                         <li>
                           <p>
